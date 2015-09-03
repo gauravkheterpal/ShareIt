@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vUJ-sv-9I7">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Share Ext View Controller-->
+        <scene sceneID="Sao-v2-ekg">
+            <objects>
+                <viewController storyboardIdentifier="ShareView" id="vUJ-sv-9I7" customClass="ShareExtViewController" customModule="com_metacube_mobile_ShareIt_shareExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Y7-rL-qJ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="GkM-K6-z7J"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="hLd-fI-bZd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dtF-X2-Gxz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242" y="-92"/>
+        </scene>
+        <!--Share Ext Config Item View Controller-->
+        <scene sceneID="wsf-O5-PdC">
+            <objects>
+                <viewController storyboardIdentifier="ConfigurationItemView" id="r6b-53-gU2" customClass="ShareExtConfigItemViewController" customModule="com_appirio_mobile_ChatterShare_shareExtension" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PzZ-u7-MED"/>
+                        <viewControllerLayoutGuide type="bottom" id="teh-xQ-hvw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TnR-VV-skB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="TopLeft" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qtl-XY-Wig">
+                                <rect key="frame" x="20" y="11" width="560" height="530"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="valueDidChange:" destination="r6b-53-gU2" eventType="editingChanged" id="Tdi-MU-52g"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qtl-XY-Wig" firstAttribute="leading" secondItem="TnR-VV-skB" secondAttribute="leading" constant="20" symbolic="YES" id="5l5-9m-OJN"/>
+                            <constraint firstItem="qtl-XY-Wig" firstAttribute="top" secondItem="TnR-VV-skB" secondAttribute="top" constant="11" id="CMG-zs-avB"/>
+                            <constraint firstAttribute="trailing" secondItem="qtl-XY-Wig" secondAttribute="trailing" constant="20" symbolic="YES" id="lKM-qf-62h"/>
+                            <constraint firstItem="teh-xQ-hvw" firstAttribute="top" secondItem="qtl-XY-Wig" secondAttribute="bottom" constant="59" id="t5Z-3b-UmL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q4y-7G-T1Q">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="mWZ-8G-dN2"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="valueView" destination="qtl-XY-Wig" id="2xx-rL-UHa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORB-4e-sRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="152" y="248"/>
+        </scene>
+    </scenes>
+</document>

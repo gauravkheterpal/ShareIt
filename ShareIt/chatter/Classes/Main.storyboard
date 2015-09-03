@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s7z-cQ-xPc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Mcw-mQ-eqT">
+            <objects>
+                <viewController restorationIdentifier="InitialView" id="s7z-cQ-xPc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xfB-Mk-Llu"/>
+                        <viewControllerLayoutGuide type="bottom" id="QVD-BG-Pap"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="center" id="VEt-km-GDy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JNV-r1-Mq3">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <animations/>
+                                <color key="color" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="JNV-r1-Mq3" firstAttribute="top" secondItem="VEt-km-GDy" secondAttribute="top" id="Ccq-Gm-un2"/>
+                            <constraint firstAttribute="centerY" secondItem="JNV-r1-Mq3" secondAttribute="centerY" id="Okx-ST-5zU"/>
+                            <constraint firstAttribute="centerX" secondItem="JNV-r1-Mq3" secondAttribute="centerX" id="Zys-FX-hUz"/>
+                            <constraint firstItem="JNV-r1-Mq3" firstAttribute="leading" secondItem="VEt-km-GDy" secondAttribute="leading" id="bv9-hc-Z1o"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1zi-TH-h1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1750" y="711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TtO-dj-ftk">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationView" id="2lp-KT-HPU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hF-fp-CRU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="YuO-jN-oXZ" kind="relationship" relationship="rootViewController" id="kv3-0e-dzv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6n-Jm-1d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1744" y="1462"/>
+        </scene>
+        <!--Share Photo-->
+        <scene sceneID="9XI-zI-x2S">
+            <objects>
+                <viewController id="Pnq-N9-x6h" customClass="SIPhotoViewController" customModule="ShareIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ayp-51-Tqc"/>
+                        <viewControllerLayoutGuide type="bottom" id="eVN-NT-Sj2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LH7-iZ-P9K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0a-gE-ddl">
+                                <rect key="frame" x="20" y="174" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" image="SharePhotoTabIcon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="eSc-Yz-lfq"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TagIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hdt-Ur-oM7">
+                                <rect key="frame" x="20" y="124" width="30" height="30"/>
+                                <animations/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Photo" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQA-UO-ynD">
+                                <rect key="frame" x="58" y="124" width="194" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MessageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u4X-PE-0xk">
+                                <rect key="frame" x="20" y="291" width="30" height="30"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3U-gp-t0a">
+                                <rect key="frame" x="260" y="124" width="40" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sharePhoto:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="uFG-8W-YbR"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's on your mind? Just type here..." translatesAutoresizingMaskIntoConstraints="NO" id="pnd-mE-xip">
+                                <rect key="frame" x="58" y="291" width="242" height="101"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vZb-WL-Xvh">
+                                <rect key="frame" x="58" y="174" width="240" height="100"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2N3-Gp-3gG"/>
+                                    <constraint firstAttribute="height" constant="100" id="8aQ-qG-RY1"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vZb-WL-Xvh" firstAttribute="leading" secondItem="S0a-gE-ddl" secondAttribute="trailing" constant="8" symbolic="YES" id="2K9-rk-ycj"/>
+                            <constraint firstItem="dQA-UO-ynD" firstAttribute="leading" secondItem="Hdt-Ur-oM7" secondAttribute="trailing" constant="8" symbolic="YES" id="2eu-z4-Eux"/>
+                            <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="dQA-UO-ynD" secondAttribute="top" id="9r6-Kv-qJM"/>
+                            <constraint firstItem="pnd-mE-xip" firstAttribute="top" secondItem="vZb-WL-Xvh" secondAttribute="bottom" constant="17" id="FIY-l5-nAJ"/>
+                            <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="r3U-gp-t0a" secondAttribute="top" id="GJp-ts-YHY"/>
+                            <constraint firstItem="S0a-gE-ddl" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="IRa-Hr-R1I"/>
+                            <constraint firstItem="u4X-PE-0xk" firstAttribute="top" secondItem="pnd-mE-xip" secondAttribute="top" id="SU2-jd-r09"/>
+                            <constraint firstItem="u4X-PE-0xk" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="SvQ-Oc-r9w"/>
+                            <constraint firstItem="pnd-mE-xip" firstAttribute="leading" secondItem="u4X-PE-0xk" secondAttribute="trailing" constant="8" symbolic="YES" id="UG5-LO-JeF"/>
+                            <constraint firstItem="Hdt-Ur-oM7" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="WHn-gK-EVj"/>
+                            <constraint firstAttribute="trailing" secondItem="r3U-gp-t0a" secondAttribute="trailing" constant="20" symbolic="YES" id="X5e-xh-meo"/>
+                            <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="ayp-51-Tqc" secondAttribute="bottom" constant="60" id="jpY-4q-W5t"/>
+                            <constraint firstItem="eVN-NT-Sj2" firstAttribute="top" secondItem="pnd-mE-xip" secondAttribute="bottom" constant="132" id="mUT-67-VXq"/>
+                            <constraint firstAttribute="trailing" secondItem="dQA-UO-ynD" secondAttribute="trailing" constant="68" id="nN4-sp-Imy"/>
+                            <constraint firstAttribute="trailing" secondItem="pnd-mE-xip" secondAttribute="trailing" constant="20" symbolic="YES" id="rF2-6z-5nc"/>
+                            <constraint firstItem="S0a-gE-ddl" firstAttribute="top" secondItem="Hdt-Ur-oM7" secondAttribute="bottom" constant="20" id="rvB-P8-pOK"/>
+                            <constraint firstItem="vZb-WL-Xvh" firstAttribute="top" secondItem="S0a-gE-ddl" secondAttribute="top" id="yZf-gj-4ST"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Share Photo" image="SharePhotoTabIcon" id="OnH-x9-Sdj"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="fileName" destination="dQA-UO-ynD" id="m6B-fX-6Ty"/>
+                        <outlet property="message" destination="pnd-mE-xip" id="OGQ-bl-Gom"/>
+                        <outlet property="photoPreview" destination="vZb-WL-Xvh" id="V43-NK-tFJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poG-nh-t9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-750" y="1793"/>
+        </scene>
+        <!--Share Link-->
+        <scene sceneID="haD-t6-5MB">
+            <objects>
+                <viewController id="Oll-I5-Gfn" customClass="SILinkViewController" customModule="ShareIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5nd-pM-5ca"/>
+                        <viewControllerLayoutGuide type="bottom" id="gW5-1e-7Dk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="center" id="h12-DQ-jwb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ShareLinkTabIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eAY-LW-VbZ">
+                                <rect key="frame" x="20" y="124" width="27" height="30"/>
+                                <animations/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.dreamforce.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Y-Q0-Wlr">
+                                <rect key="frame" x="55" y="124" width="197" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                            </textField>
+                            <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iw-y8-31W">
+                                <rect key="frame" x="260" y="124" width="40" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareLink:" destination="Oll-I5-Gfn" eventType="touchUpInside" id="Pv5-Qf-WU0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TagIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EqT-w9-MR5">
+                                <rect key="frame" x="20" y="174" width="30" height="30"/>
+                                <animations/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chatter" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-vX-ksL">
+                                <rect key="frame" x="58" y="174" width="242" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MessageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qKm-d4-Vjq">
+                                <rect key="frame" x="20" y="229" width="30" height="30"/>
+                                <animations/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can add notes here..." translatesAutoresizingMaskIntoConstraints="NO" id="GZv-qp-bWS">
+                                <rect key="frame" x="58" y="229" width="242" height="86"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qKm-d4-Vjq" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="2Xn-cO-BiG"/>
+                            <constraint firstItem="qKm-d4-Vjq" firstAttribute="top" secondItem="EqT-w9-MR5" secondAttribute="bottom" constant="25" id="4j6-B7-p4C"/>
+                            <constraint firstItem="gW5-1e-7Dk" firstAttribute="top" secondItem="GZv-qp-bWS" secondAttribute="bottom" constant="204" id="5UM-Ra-1mI"/>
+                            <constraint firstItem="EqT-w9-MR5" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="7Iz-U2-G3w"/>
+                            <constraint firstAttribute="trailing" secondItem="FUa-vX-ksL" secondAttribute="trailing" constant="20" id="9SW-Qb-M5q"/>
+                            <constraint firstAttribute="trailing" secondItem="GZv-qp-bWS" secondAttribute="trailing" constant="20" symbolic="YES" id="9lL-D0-qYw"/>
+                            <constraint firstItem="5iw-y8-31W" firstAttribute="top" secondItem="Z5Y-Q0-Wlr" secondAttribute="top" id="CCj-Ab-g5F"/>
+                            <constraint firstItem="5iw-y8-31W" firstAttribute="leading" secondItem="Z5Y-Q0-Wlr" secondAttribute="trailing" constant="8" symbolic="YES" id="GDt-cr-vEy"/>
+                            <constraint firstItem="EqT-w9-MR5" firstAttribute="top" secondItem="eAY-LW-VbZ" secondAttribute="bottom" constant="20" id="Hrf-IY-MAu"/>
+                            <constraint firstItem="eAY-LW-VbZ" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="I73-nk-bmm"/>
+                            <constraint firstItem="5iw-y8-31W" firstAttribute="top" secondItem="eAY-LW-VbZ" secondAttribute="top" id="JGK-KC-DYR"/>
+                            <constraint firstAttribute="trailing" secondItem="5iw-y8-31W" secondAttribute="trailing" constant="20" symbolic="YES" id="N9G-mh-VUv"/>
+                            <constraint firstItem="EqT-w9-MR5" firstAttribute="top" secondItem="FUa-vX-ksL" secondAttribute="top" id="NTX-Ps-ax3"/>
+                            <constraint firstItem="GZv-qp-bWS" firstAttribute="top" secondItem="qKm-d4-Vjq" secondAttribute="top" id="Xb8-Sp-DKc"/>
+                            <constraint firstItem="eAY-LW-VbZ" firstAttribute="top" secondItem="5nd-pM-5ca" secondAttribute="bottom" constant="60" id="Z7j-VT-4AM"/>
+                            <constraint firstItem="FUa-vX-ksL" firstAttribute="leading" secondItem="EqT-w9-MR5" secondAttribute="trailing" constant="8" symbolic="YES" id="gZo-lq-rLj"/>
+                            <constraint firstItem="Z5Y-Q0-Wlr" firstAttribute="leading" secondItem="eAY-LW-VbZ" secondAttribute="trailing" constant="8" symbolic="YES" id="sXy-fc-lWA"/>
+                            <constraint firstAttribute="trailing" secondItem="Z5Y-Q0-Wlr" secondAttribute="trailing" constant="68" id="vnq-fU-Hj4"/>
+                            <constraint firstItem="GZv-qp-bWS" firstAttribute="leading" secondItem="qKm-d4-Vjq" secondAttribute="trailing" constant="8" symbolic="YES" id="zzF-KJ-oAz"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Share Link" image="ShareLinkTabIcon" id="Ugf-it-UPb"/>
+                    <connections>
+                        <outlet property="link" destination="Z5Y-Q0-Wlr" id="SBy-pO-OzE"/>
+                        <outlet property="linkName" destination="FUa-vX-ksL" id="GCX-r5-N0h"/>
+                        <outlet property="message" destination="GZv-qp-bWS" id="PIS-dR-Xfd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNb-Bw-Ttv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-750" y="1166"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="iuw-Lk-gRN">
+            <objects>
+                <tabBarController id="YuO-jN-oXZ" customClass="SIRootViewController" customModule="ShareIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4sQ-Pf-Fvs">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="Ue5-m8-Pbd">
+                            <connections>
+                                <action selector="logout:" destination="YuO-jN-oXZ" id="Ds0-Pk-Jp4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="g6Q-ED-fDG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Oll-I5-Gfn" kind="relationship" relationship="viewControllers" id="f5O-dK-ZiR"/>
+                        <segue destination="Pnq-N9-x6h" kind="relationship" relationship="viewControllers" id="2v5-fw-fQM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ey5-NK-e4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1290" y="1462"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MessageIcon" width="30" height="30"/>
+        <image name="ShareLinkTabIcon" width="30" height="30"/>
+        <image name="SharePhotoTabIcon" width="30" height="30"/>
+        <image name="TagIcon" width="30" height="30"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

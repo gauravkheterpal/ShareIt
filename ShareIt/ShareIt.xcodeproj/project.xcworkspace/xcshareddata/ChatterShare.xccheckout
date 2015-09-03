@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>495E155B-AE9D-4FEC-8CAF-C46FF3C93527</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ChatterShare</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>44803D0B4FF6E69F37EBAE7BBF8B7B902F9C8A66</key>
+		<string>https://bitbucket.org/bhavna24/shareextension.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ChatterShare/ChatterShare.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>44803D0B4FF6E69F37EBAE7BBF8B7B902F9C8A66</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/bhavna24/shareextension.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>44803D0B4FF6E69F37EBAE7BBF8B7B902F9C8A66</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>44803D0B4FF6E69F37EBAE7BBF8B7B902F9C8A66</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ShareIt</string>
+		</dict>
+	</array>
+</dict>
+</plist>
