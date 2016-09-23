@@ -20,7 +20,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      @param request -> the request
      @param jsonResponse -> the response
      */
-    func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {
+    func request(_ request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {
         if request.path.hasSuffix("/feed-items") {
             // Feed item post response
             NSLog("SIChatterViewController.request:didLoadResponse: shared item has been successfully posted.");
@@ -34,7 +34,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      @param request -> the request
      @param error -> the error
      */
-    func request(request : SFRestRequest, didFailLoadWithError error : NSError) {
+    func request(_ request : SFRestRequest, didFailLoadWithError error : NSError) {
         NSLog("SIChatterViewController.request:didFailLoadWithError: REST API request failed: %@", error);
         SIChatterModel.showErrorAlert("Request to Salesforce failed.", controller : self)
     }
@@ -43,7 +43,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      This delegate is called when a request has be cancelled.
      @param request -> the request
      */
-    func requestDidCancelLoad(request : SFRestRequest) {
+    func requestDidCancelLoad(_ request : SFRestRequest) {
         NSLog("SIChatterViewController.requestDidCancelLoad: REST API request cancelled: %@", request);
         SIChatterModel.showErrorAlert("Request to Salesforce is cancelled.", controller : self)
     }
@@ -52,7 +52,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      This delegate is called when a request has timed out.
      @param -> request the request
      */
-    func requestDidTimeout(request : SFRestRequest) {
+    func requestDidTimeout(_ request : SFRestRequest) {
         NSLog("ChatterShareViewController.requestDidTimeout: REST API request timeout: %@", request);
         SIChatterModel.showErrorAlert("Request to Salesforce timeout.", controller : self)
     }

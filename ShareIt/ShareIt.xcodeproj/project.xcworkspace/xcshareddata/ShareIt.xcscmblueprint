@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C94C4FE7A8739206AB3EC14A7ADCB3234036B11B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9FB281DD8F44D881EA13332A01AE50ACFB99B397" : 0,
+    "C94C4FE7A8739206AB3EC14A7ADCB3234036B11B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "54ED6B01-9E0C-480F-8EF4-3356110D76A5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9FB281DD8F44D881EA13332A01AE50ACFB99B397" : "ShareIt\/",
+    "C94C4FE7A8739206AB3EC14A7ADCB3234036B11B" : "shareit_VS10\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ShareIt",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ShareIt\/ShareIt.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/bhavna24\/shareextension.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9FB281DD8F44D881EA13332A01AE50ACFB99B397"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/PoojaJangid\/shareit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C94C4FE7A8739206AB3EC14A7ADCB3234036B11B"
+    }
+  ]
+}

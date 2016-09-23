@@ -24,7 +24,7 @@ class ShareExtConfigItemViewController : UIViewController {
      This function is called when the value of the item changed.
      @param sender -> the event sender
      */
-    @IBAction func valueDidChange(sender: AnyObject) {
+    @IBAction func valueDidChange(_ sender: AnyObject) {
         if (configurationItem != nil) {
             configurationItem!.value = valueView!.text
             shareExtViewController!.validateContent()

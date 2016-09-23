@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>AppSuiteName</key>
 	<string>group.metacube.mobile.shareIt</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -46,9 +53,9 @@
 		<string>com.apple.share-services</string>
 	</dict>
 	<key>SFDCOAuthCallbackURL</key>
-	<string>testsfdc:///mobilesdk/detect/oauth/done</string>
+	<string>testsf://metacube/shareit/oauth</string>
 	<key>SFDCOAuthConsumerKey</key>
-	<string>3MVG9Y6d_Btp4xp7GiJiJLt3LjH24GqI7hUvixFjbRrhDvXUN3KJI0D_HmstUY7nGgecK.lTNeIkPuti34OMY</string>
+	<string>3MVG9ZL0ppGP5UrAsQVC7RjiN7CXVUn2yoiopnXCzOxRuWcaPnskcoDLhI2zt1Oa96kk6Lh6c7LSB.QHn8bpE</string>
 	<key>SFDCOAuthLoginHost</key>
 	<string>login.salesforce.com</string>
 </dict>

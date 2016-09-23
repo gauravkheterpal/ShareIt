@@ -37,12 +37,11 @@ final class SIChatterModel {
      @param linkName -> the link name
      @param delegate -> the SFRestDelegate to use
      */
-    class func postFeedItemToChatterWall(feedMsg : String, withLink link : String, linkName : String, delegate : SFRestDelegate) {
-        let payloadData = [
-            "attachment" : [ "attachmentType" : "Link", "url" : link, "urlName" : linkName],
+    class func postFeedItemToChatterWall(_ feedMsg : String, withLink link : String, linkName : String, delegate : SFRestDelegate) {
+        let payloadData = ["attachment" : [ "attachmentType" : "Link", "url" : link, "urlName" : linkName],
             "body" : ["messageSegments" : [["type" : "Text", "text" : feedMsg]]]
-        ]
-        let request = SFRestRequest.requestWithMethod(SFRestMethodPOST, path: SIPostFeedItemsToChatterWallURL,
+        ] as [String : Any]
+        let request = SFRestRequest.request(with: SFRestMethodPOST, path: SIPostFeedItemsToChatterWallURL,
             queryParams: payloadData) as! SFRestRequest
         SFRestAPI.sharedInstance().send(request, delegate: delegate)
     }
@@ -54,9 +53,9 @@ final class SIChatterModel {
      @param mimeType -> the MIME type
      @param delegate -> the SFRestDelegate to use
      */
-    class func uploadFile(fileName : String, fileContent : NSData, mimeType : String, delegate : SFRestDelegate) {
-        let request = SFRestAPI.sharedInstance().requestForUploadFile(
-            fileContent, name: fileName, description: nil, mimeType: mimeType)
+    class func uploadFile(_ fileName : String, fileContent : Data, mimeType : String, delegate : SFRestDelegate) {
+        let request = SFRestAPI.sharedInstance().request(
+            forUploadFile: fileContent, name: fileName, description: nil, mimeType: mimeType)
         SFRestAPI.sharedInstance().send(request, delegate: delegate)
     }
 
@@ -66,12 +65,11 @@ final class SIChatterModel {
      @param contentDocumentId -> the ID of the document
      @param delegate -> the SFRestDelegate to use
     */
-    class func postFeedItemToChatterWall(feedMsg : String, withExistingDocument contentDocumentId : String, delegate : SFRestDelegate) {
-        let payloadData = [
-            "attachment" : [ "attachmentType" : "ExistingContent", "contentDocumentId" : contentDocumentId],
+    class func postFeedItemToChatterWall(_ feedMsg : String, withExistingDocument contentDocumentId : String, delegate : SFRestDelegate) {
+        let payloadData = ["attachment" : [ "attachmentType" : "ExistingContent", "contentDocumentId" : contentDocumentId],
             "body" : ["messageSegments" : [["type" : "Text", "text" : feedMsg]]]
-        ]
-        let request = SFRestRequest.requestWithMethod(SFRestMethodPOST, path: SIPostFeedItemsToChatterWallURL,
+        ] as [String : Any]
+        let request = SFRestRequest.request(with: SFRestMethodPOST, path: SIPostFeedItemsToChatterWallURL,
             queryParams: payloadData) as! SFRestRequest
         SFRestAPI.sharedInstance().send(request, delegate: delegate)
     }
@@ -81,8 +79,8 @@ final class SIChatterModel {
      @return the name of the app suite
      */
     class func getAppSuiteName() -> String {
-        let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource(nil, ofType: "plist")!)
-        return dict!.objectForKey("AppSuiteName") as! String
+        let dict = NSDictionary(contentsOfFile: Bundle.main.path(forResource: nil, ofType: "plist")!)
+        return dict!.object(forKey: "AppSuiteName") as! String
     }
 
     /*!
@@ -90,13 +88,13 @@ final class SIChatterModel {
      @param sfUserAccount -> the salesforce user account to save, nil will result the user account to be removed
      @return true if saved successfully, false otherwise
      */
-    class func saveSFUserAccount(sfUserAccount : SFUserAccount?) -> Bool {
-        let sharedUserDefaults = NSUserDefaults(suiteName: getAppSuiteName())
+    class func saveSFUserAccount(_ sfUserAccount : SFUserAccount?) -> Bool {
+        let sharedUserDefaults = UserDefaults(suiteName: getAppSuiteName())
         if (sfUserAccount != nil) {
-            sharedUserDefaults!.setObject(NSKeyedArchiver.archivedDataWithRootObject(sfUserAccount!),
+            sharedUserDefaults!.set(NSKeyedArchiver.archivedData(withRootObject: sfUserAccount!),
                 forKey: SINSUserDefaultsSFUserAccountKey)
         } else {
-            sharedUserDefaults!.removeObjectForKey(SINSUserDefaultsSFUserAccountKey)
+            sharedUserDefaults!.removeObject(forKey: SINSUserDefaultsSFUserAccountKey)
         }
         return sharedUserDefaults!.synchronize()
     }
@@ -106,9 +104,9 @@ final class SIChatterModel {
      @return the salesforce user account. nil if no salesforce user account is present.
      */
     class func getSFUserAccount() -> SFUserAccount? {
-        let sharedUserDefaults = NSUserDefaults(suiteName: getAppSuiteName())
-        if let data = sharedUserDefaults!.objectForKey(SINSUserDefaultsSFUserAccountKey) as? NSData {
-            return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? SFUserAccount
+        let sharedUserDefaults = UserDefaults(suiteName: getAppSuiteName())
+        if let data = sharedUserDefaults!.object(forKey: SINSUserDefaultsSFUserAccountKey) as? Data {
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as? SFUserAccount
         } else {
             return nil
         }
@@ -119,7 +117,7 @@ final class SIChatterModel {
      @param alertMessage -> the alert message
      @param controller -> the UIViewController
      */
-    class func showErrorAlert(alertMessage : String, controller : UIViewController) {
+    class func showErrorAlert(_ alertMessage : String, controller : UIViewController) {
         showAlert("Error", alertMessage: alertMessage, controller : controller)
     }
 
@@ -129,7 +127,7 @@ final class SIChatterModel {
      @param alertMessage -> the alert message
      @param controller -> the UIViewController
      */
-    class func showAlert(alertTitle : String, alertMessage : String, controller : UIViewController) {
+    class func showAlert(_ alertTitle : String, alertMessage : String, controller : UIViewController) {
         showAlert(alertTitle, alertMessage: alertMessage, handler : nil, controller: controller)
     }
 
@@ -140,12 +138,12 @@ final class SIChatterModel {
      @param handler -> the handler closure
      @param controller -> the UIViewController
      */
-    class func showAlert(alertTitle : String, alertMessage : String, handler : ((UIAlertAction!) -> Void)!,
+    class func showAlert(_ alertTitle : String, alertMessage : String, handler : ((UIAlertAction?) -> Void)!,
         controller : UIViewController) {
-        var alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler : handler))
-        dispatch_async(dispatch_get_main_queue()) {
-            controller.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler : handler))
+        DispatchQueue.main.async {
+            controller.present(alert, animated: true, completion: nil)
         }
     }
 

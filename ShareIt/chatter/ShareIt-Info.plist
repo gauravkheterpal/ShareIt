@@ -41,12 +41,21 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Share</string>
 	<key>SFDCOAuthCallbackURL</key>
-	<string>testsfdc:///mobilesdk/detect/oauth/done</string>
+	<string>testsf://metacube/shareit/oauth</string>
 	<key>SFDCOAuthConsumerKey</key>
-	<string>3MVG9ZL0ppGP5UrBly5N4WklgL0ZiS6sHfjz9UE_a1xOac4xnRV6eIBibL0VfHUutVW7SG4yVQgBssd8us5c1</string>
+	<string>3MVG9ZL0ppGP5UrAsQVC7RjiN7CXVUn2yoiopnXCzOxRuWcaPnskcoDLhI2zt1Oa96kk6Lh6c7LSB.QHn8bpE</string>
 	<key>SFDCOAuthLoginHost</key>
 	<string>login.salesforce.com</string>
+	<key>UILaunchStoryboardName</key>
+	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -58,6 +67,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

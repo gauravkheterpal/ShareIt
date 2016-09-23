@@ -20,11 +20,12 @@ class SILinkViewController : SIChatterViewController {
 
     @IBOutlet var message: UITextView!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Looks for single or multiple taps.
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SILinkViewController.hideKeyboard))
         view.addGestureRecognizer(tap)
     }
     
@@ -39,22 +40,24 @@ class SILinkViewController : SIChatterViewController {
      @param sender -> the event sender
      */
     @IBAction func shareLink(sender: AnyObject) {
+        self.activityIndicator.startAnimating();
         var msg = ""
-        if link.text.isEmpty {
+        if !((link.text?.isEmpty) != nil) {
             msg = msg + "Link is required!\n"
         }
-        if !(NSURL(string:link.text) != nil) {
+        if !(NSURL(string:link.text!) != nil) {
             msg = msg + "Link is not valid URL!\n"
         }
-        if linkName.text.isEmpty {
+        if !((linkName.text?.isEmpty) != nil) {
             msg = msg + "Link Name is required!\n"
         }
         if msg.isEmpty {
             // Post feed item with link
-            SIChatterModel.postFeedItemToChatterWall(message.text, withLink: link.text,
-                linkName: linkName.text, delegate: self)
+            SIChatterModel.postFeedItemToChatterWall(message.text, withLink: link.text!,
+                linkName: linkName.text!, delegate: self)
         } else {
             SIChatterModel.showErrorAlert(msg, controller : self)
         }
+        self.activityIndicator.stopAnimating();
     }
 }
