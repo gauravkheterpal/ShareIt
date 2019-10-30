@@ -25,7 +25,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.backgroundColor = UIColor(red: 46.0/255.0, green: 140.0/255.0, blue: 212.0/255.0, alpha: 1.0)
       
         
@@ -36,11 +36,11 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
             NSLog("Salesforce account username %@", userAccount.userName)
             SFUserAccountManager.sharedInstance().currentUser = userAccount
         } else {
-            SIChatterModel.showAlert("No Salesforce Account", alertMessage:
+            SIChatterModel.showAlert(alertTitle: "No Salesforce Account", alertMessage:
                 "There is no Salesforce account configured. Please launch Chatter Share app to login and try again.",
                 handler: {
                     (UIAlertAction) in
-                    self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
+                    self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
                 },
                 controller: self)
         }
@@ -65,7 +65,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
             let storyboard = UIStoryboard(name: "MainInterface", bundle: nil)
             
             func createConfigurationItemController(item : SLComposeSheetConfigurationItem) {
-                let controller = storyboard.instantiateViewControllerWithIdentifier(SIConfigurationItemViewID)
+                let controller = storyboard.instantiateViewController(withIdentifier: SIConfigurationItemViewID)
                     as! ShareExtConfigItemViewController
                 controller.configurationItem = item
                 controller.shareExtViewController = self
@@ -80,28 +80,28 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
                 // - URL
                 // - Link Name
                 let urlItem = SLComposeSheetConfigurationItem()
-                urlItem.title = "URL"
-                self.attachment!.loadItemForTypeIdentifier(kUTTypeURL as! String, options: nil, completionHandler: {
+                urlItem!.title = "URL"
+                self.attachment!.loadItem(forTypeIdentifier: kUTTypeURL as! String, options: nil, completionHandler: {
                     (obj, error) in
                     if let url = obj as? NSURL {
-                        urlItem.value = url.absoluteString
+                        urlItem!.value = url.absoluteString
                     }
                 })
                 let linkNameItem = SLComposeSheetConfigurationItem()
-                linkNameItem.title = "Link Name"
-                linkNameItem.value = self.contentText
+                linkNameItem!.title = "Link Name"
+                linkNameItem!.value = self.contentText
                 //createConfigurationItemController(linkNameItem)
 
-                self.configItems = [urlItem, linkNameItem]
+                self.configItems = [urlItem, linkNameItem] as! [SLComposeSheetConfigurationItem]
             } else if self.attachment!.hasItemConformingToTypeIdentifier(kUTTypeImage as! String) {
                 // Photo attachment needs one configuration item:
                 // - Photo Title
                 let photoTitleItem = SLComposeSheetConfigurationItem()
-                photoTitleItem.title = "Photo Title"
-                photoTitleItem.value = "Photo"
+                photoTitleItem!.title = "Photo Title"
+                photoTitleItem!.value = "Photo"
                 //createConfigurationItemController(photoTitleItem)
 
-                self.configItems = [photoTitleItem]
+                self.configItems = [photoTitleItem] as! [SLComposeSheetConfigurationItem]
             }
         }
     }
@@ -139,12 +139,12 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
     override func didSelectPost() {
         if (self.attachment != nil) {
             if self.attachment!.hasItemConformingToTypeIdentifier(kUTTypeURL as! String) {
-                SIChatterModel.postFeedItemToChatterWall(self.contentText, withLink: self.configItems[0].value,
+                SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText, withLink: self.configItems[0].value,
                     linkName: self.configItems[1].value, delegate: self)
             } else if self.attachment!.hasItemConformingToTypeIdentifier(kUTTypeImage as! String) {
                 // Determine MIME type
                 var mimeType = "application/octet-stream"
-                var fileName = self.configItems[0].value
+                guard var fileName = self.configItems[0].value else {super.didSelectPost(); return}
                 if self.attachment!.hasItemConformingToTypeIdentifier(kUTTypeJPEG as! String) {
                     mimeType = "image/jpeg"
                     fileName = fileName + ".jpg"
@@ -162,14 +162,14 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
                     fileName = fileName + ".tiff"
                 }
                 // Load photo content
-                self.attachment!.loadItemForTypeIdentifier(kUTTypeImage as! String, options: nil, completionHandler: {
+                self.attachment!.loadItem(forTypeIdentifier: kUTTypeImage as! String, options: nil, completionHandler: {
                     (obj, error) in
                     
                     if let imageURL = obj as? NSURL {
                     
-                        let imageData = NSData(contentsOfURL: imageURL)
+                        let imageData = NSData(contentsOf: imageURL as URL)
                         // Upload photo to Salesforce
-                        SIChatterModel.uploadFile(fileName, fileContent: imageData!,
+                        SIChatterModel.uploadFile(fileName: fileName, fileContent: imageData!,
                             mimeType: mimeType, delegate: self)
                     }
                 })
@@ -185,7 +185,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      Returns the configuration items.
      @return the configuration items
      */
-    override func configurationItems() -> [AnyObject]! {
+    override func configurationItems() -> [Any]! {
         return configItems
     }
 
@@ -198,18 +198,20 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
     {
         if request.path.hasSuffix("/feed-items") {
             // Feed item post response
-            SIChatterModel.showAlert("Success", alertMessage:
+            SIChatterModel.showAlert(alertTitle: "Success", alertMessage:
                 "The shared item has been successfully posted.",
                 handler: {
                     (UIAlertAction) in
-                    self.extensionContext!.completeRequestReturningItems(nil, completionHandler: nil)
+                    self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
                 },
                 controller: self)
           
         } else {
             // File upload response, post feed item
-            SIChatterModel.postFeedItemToChatterWall(self.contentText,
-                withExistingDocument: jsonResponse.objectForKey("id") as! String, delegate: self)
+//            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
+//                                                     withExistingDocument: jsonResponse.object("id") as! String, delegate: self)
+            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
+                                                     withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
         }
     }
 
@@ -219,7 +221,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param error -> the error
     */
     func request(request : SFRestRequest, didFailLoadWithError error : NSError) {
-        showAlert("Request to Salesforce failed.")
+        showAlert(alertMessage: "Request to Salesforce failed.")
     }
 
     /*!
@@ -227,7 +229,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param request -> the request
      */
     func requestDidCancelLoad(request : SFRestRequest) {
-        showAlert("Request to Salesforce is cancelled.")
+        showAlert(alertMessage: "Request to Salesforce is cancelled.")
     }
 
     /*!
@@ -235,7 +237,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param request -> the request
      */
     func requestDidTimeout(request : SFRestRequest) {
-        showAlert("Request to Salesforce timeout.")
+        showAlert(alertMessage: "Request to Salesforce timeout.")
     }
 
     /*!
@@ -243,8 +245,8 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param message -> the alert message
      */
     func showAlert(alertMessage : String) {
-        var alert = UIAlertController(title: "Error", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler : nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        var alert = UIAlertController(title: "Error", message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler : nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

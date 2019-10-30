@@ -40,21 +40,21 @@ class SILinkViewController : SIChatterViewController {
      */
     @IBAction func shareLink(sender: AnyObject) {
         var msg = ""
-        if link.text.isEmpty {
+        if link.text?.isEmpty ?? true{
             msg = msg + "Link is required!\n"
         }
-        if !(NSURL(string:link.text) != nil) {
+        if !(NSURL(string:link.text!) != nil) {
             msg = msg + "Link is not valid URL!\n"
         }
-        if linkName.text.isEmpty {
+        if linkName.text!.isEmpty {
             msg = msg + "Link Name is required!\n"
         }
         if msg.isEmpty {
             // Post feed item with link
-            SIChatterModel.postFeedItemToChatterWall(message.text, withLink: link.text,
-                linkName: linkName.text, delegate: self)
+            SIChatterModel.postFeedItemToChatterWall(feedMsg: message.text, withLink: link.text!,
+                linkName: linkName.text!, delegate: self)
         } else {
-            SIChatterModel.showErrorAlert(msg, controller : self)
+            SIChatterModel.showErrorAlert(alertMessage: msg, controller : self)
         }
     }
 }

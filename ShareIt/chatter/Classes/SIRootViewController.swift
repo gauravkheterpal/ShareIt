@@ -18,6 +18,6 @@ class SIRootViewController : UITabBarController {
      @param sender -> the event sender
      */
     @IBAction func logout(sender: AnyObject) {
-        SFAuthenticationManager.sharedManager().logout()
+        SFAuthenticationManager.shared().logout()
     }
 }

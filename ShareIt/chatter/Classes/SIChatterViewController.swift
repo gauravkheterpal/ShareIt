@@ -24,7 +24,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
         if request.path.hasSuffix("/feed-items") {
             // Feed item post response
             NSLog("SIChatterViewController.request:didLoadResponse: shared item has been successfully posted.");
-            SIChatterModel.showAlert("Success", alertMessage: "The shared item has been successfully posted.",
+            SIChatterModel.showAlert(alertTitle: "Success", alertMessage: "The shared item has been successfully posted.",
                 controller : self)
         }
     }
@@ -36,7 +36,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      */
     func request(request : SFRestRequest, didFailLoadWithError error : NSError) {
         NSLog("SIChatterViewController.request:didFailLoadWithError: REST API request failed: %@", error);
-        SIChatterModel.showErrorAlert("Request to Salesforce failed.", controller : self)
+        SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce failed.", controller : self)
     }
 
     /*!
@@ -45,7 +45,7 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      */
     func requestDidCancelLoad(request : SFRestRequest) {
         NSLog("SIChatterViewController.requestDidCancelLoad: REST API request cancelled: %@", request);
-        SIChatterModel.showErrorAlert("Request to Salesforce is cancelled.", controller : self)
+        SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce is cancelled.", controller : self)
     }
 
     /*!
@@ -54,6 +54,6 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      */
     func requestDidTimeout(request : SFRestRequest) {
         NSLog("ChatterShareViewController.requestDidTimeout: REST API request timeout: %@", request);
-        SIChatterModel.showErrorAlert("Request to Salesforce timeout.", controller : self)
+        SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce timeout.", controller : self)
     }
 }

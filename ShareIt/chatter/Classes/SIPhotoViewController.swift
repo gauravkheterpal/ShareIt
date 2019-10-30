@@ -32,7 +32,7 @@ class SIPhotoViewController : SIChatterViewController,
         var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         view.addGestureRecognizer(tap)
         
-        self.photoPreview.layer.borderColor = UIColor.grayColor().CGColor
+        self.photoPreview.layer.borderColor = UIColor.gray.cgColor
         self.photoPreview.layer.borderWidth = 1.0
     }
     
@@ -47,7 +47,7 @@ class SIPhotoViewController : SIChatterViewController,
      */
     @IBAction func sharePhoto(sender: AnyObject) {
         var message = ""
-        if fileName.text.isEmpty {
+        if fileName.text?.isEmpty ?? true {
             message = message + "File name is required!\n"
         }
         if !(self.photoPreview.image != nil) {
@@ -56,20 +56,22 @@ class SIPhotoViewController : SIChatterViewController,
         if message.isEmpty {
             // Determine MIME type and data to send
             var mimeType : String
-            var data : NSData
+            var data : Data?
             if self.originalImageFileName!.hasSuffix(".jpg") {
                 mimeType = "image/jpeg"
-                data = UIImageJPEGRepresentation(self.photoPreview.image, 1.0)
+                data = self.photoPreview.image!.jpegData(compressionQuality: 1.0)
             } else if self.originalImageFileName!.hasSuffix(".png") {
                 mimeType = "image/png"
-                data = UIImagePNGRepresentation(self.photoPreview.image)
+                data = self.photoPreview.image!.pngData()
             } else {
                 mimeType = "image/jpeg"
-                data = UIImageJPEGRepresentation(self.photoPreview.image, 1.0)
+                data = self.photoPreview.image!.jpegData(compressionQuality: 1.0)
             }
-            SIChatterModel.uploadFile(self.fileName.text, fileContent: data, mimeType: mimeType, delegate: self)
+            if let dataToSend = data as? NSData {
+                SIChatterModel.uploadFile(fileName: self.fileName.text!, fileContent: dataToSend, mimeType: mimeType, delegate: self)
+            }
         } else {
-            SIChatterModel.showErrorAlert(message, controller : self)
+            SIChatterModel.showErrorAlert(alertMessage: message, controller : self)
         }
     }
 
@@ -81,8 +83,8 @@ class SIPhotoViewController : SIChatterViewController,
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
     }
 
     /*!
@@ -90,26 +92,20 @@ class SIPhotoViewController : SIChatterViewController,
      @param imagePicker -> the image picker
      @param mediaInfo -> the media information of the chosen photo
      */
-    func imagePickerController(imagePicker: UIImagePickerController, didFinishPickingMediaWithInfo mediaInfo: [NSObject : AnyObject]) {
-        
-        let selectedImage = mediaInfo[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         self.photoPreview.image = selectedImage
-        imagePicker.dismissViewControllerAnimated(true, completion:nil)
-        let url = mediaInfo[UIImagePickerControllerReferenceURL] as! NSURL
+        picker.dismiss(animated: true, completion:nil)
+        let url = info[UIImagePickerController.InfoKey.referenceURL] as! URL
         
         // Try to get the real file name using Asset Library Framework
         let library = ALAssetsLibrary()
-        library.assetForURL(url,
-            resultBlock: {
-                (asset : ALAsset?) in
-                self.fileName.text = asset!.defaultRepresentation().filename()
-                self.originalImageFileName = self.fileName.text.lastPathComponent;
-            },
-            failureBlock: {
-                (error : NSError?) in
-                self.fileName.text = url.lastPathComponent
-            }
-        )
+        library.asset(for: url, resultBlock: { (asset) in
+            self.fileName.text = asset!.defaultRepresentation().filename()
+            self.originalImageFileName = asset?.defaultRepresentation()?.url()?.lastPathComponent
+        }) { (error) in
+            self.fileName.text = url.lastPathComponent
+        }
     }
 
     /*!
@@ -117,7 +113,7 @@ class SIPhotoViewController : SIChatterViewController,
      @param imagePicker -> the image picker
      */
     func imagePickerControllerDidCancel(imagePicker: UIImagePickerController) {
-        imagePicker.dismissViewControllerAnimated(true, completion:nil)
+        imagePicker.dismiss(animated: true, completion:nil)
     }
 
     /*!
@@ -125,11 +121,14 @@ class SIPhotoViewController : SIChatterViewController,
      @param request -> the request
      @param jsonResponse -> the response
      */
-    override func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {        super.request(request, didLoadResponse: jsonResponse)
+    override func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {
+        super.request(request: request, didLoadResponse: jsonResponse)
         if !request.path.hasSuffix("/feed-items") {
             // File upload response, posts feed item
-            SIChatterModel.postFeedItemToChatterWall(self.message.text,
-                withExistingDocument: jsonResponse.objectForKey("id") as! String, delegate: self)
+//            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text,
+//                withExistingDocument: jsonResponse.objectForKey("id") as! String, delegate: self)
+            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text,
+                                                     withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
         }
     }
 }

@@ -18,17 +18,17 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
         SFLogger.setLogLevel(SFLogLevelDebug)
 
         // Initialize SFUserAccountManager
-        let dictonaryObj = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource(nil, ofType: "plist")!)
-        SFUserAccountManager.sharedInstance().oauthClientId = dictonaryObj!.objectForKey("SFDCOAuthConsumerKey") as! String
-        SFUserAccountManager.sharedInstance().oauthCompletionUrl = dictonaryObj!.objectForKey("SFDCOAuthCallbackURL") as! String
+        let dictonaryObj = NSDictionary(contentsOfFile: Bundle.main.path(forResource: nil, ofType: "plist")!)
+        SFUserAccountManager.sharedInstance().oauthClientId = dictonaryObj!.object(forKey: "SFDCOAuthConsumerKey") as! String
+        SFUserAccountManager.sharedInstance().oauthCompletionUrl = dictonaryObj!.object(forKey: "SFDCOAuthCallbackURL") as! String
         SFUserAccountManager.sharedInstance().scopes = NSSet(array: ["api"]) as Set<NSObject>
-        SFAuthenticationManager.sharedManager().addDelegate(self)
+        SFAuthenticationManager.shared().add(self)
     }
 
 
     deinit {
         // Un-register the delegates
-        SFAuthenticationManager.sharedManager().removeDelegate(self)
+        SFAuthenticationManager.shared().remove(self)
     }
 
     /*!
@@ -42,8 +42,8 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
         login()
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 46.0/255.0, green: 140.0/255.0, blue: 212.0/255.0, alpha: 1.0)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         return true
     }
@@ -52,24 +52,24 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
     // Start Salesforce login process.
     func login() {
         // Call SFAuthenticationManager to start user login process
-        SFAuthenticationManager.sharedManager().loginWithCompletion(
-            {
+        SFAuthenticationManager.shared().login(
+            completion: {
                 // "success" closure
                 (SFOAuthInfo) in
                 // save salesforce user account
-                if !SIChatterModel.saveSFUserAccount(SFUserAccountManager.sharedInstance().currentUser) {
+                if !SIChatterModel.saveSFUserAccount(sfUserAccount: SFUserAccountManager.sharedInstance().currentUser) {
                     NSLog("ShareItAppDelegate.login: failed to save user account.")
                 }
                 // switch to main view
                 let navigationViewController = UIStoryboard(name: "Main", bundle: nil)
-                    .instantiateViewControllerWithIdentifier("NavigationView") as! UIViewController
+                    .instantiateViewController(withIdentifier: "NavigationView") as! UIViewController
                 self.window!.rootViewController = navigationViewController
             },
             failure: {
                 // "failure" closure
                 (SFOAuthInfo, NSError) in
                 // logout user anyway
-                SFAuthenticationManager.sharedManager().logout()
+                SFAuthenticationManager.shared().logout()
             }
         )
     }
@@ -82,7 +82,7 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
         // Reset app view state to its initial state
         self.initializeAppViewState()
         // Remove User Account
-        if !SIChatterModel.saveSFUserAccount(nil) {
+        if !SIChatterModel.saveSFUserAccount(sfUserAccount: nil) {
             NSLog("ShareItAppDelegate.authManagerDidLogout: failed to remove user account.")
         }
         // Start login process
