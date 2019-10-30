@@ -24,12 +24,12 @@ class SILinkViewController : SIChatterViewController {
         super.viewDidLoad()
         
         //Looks for single or multiple taps.
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
     }
     
     // It hides keyboard on tapping on screen
-    func hideKeyboard(){
+    @objc func hideKeyboard(){
         view.endEditing(true)
     }
 

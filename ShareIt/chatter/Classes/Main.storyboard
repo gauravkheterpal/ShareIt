@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s7z-cQ-xPc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="s7z-cQ-xPc">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,19 +18,17 @@
                         <viewControllerLayoutGuide type="bottom" id="QVD-BG-Pap"/>
                     </layoutGuides>
                     <view key="view" contentMode="center" id="VEt-km-GDy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JNV-r1-Mq3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <animations/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="color" cocoaTouchSystemColor="darkTextColor"/>
                             </activityIndicatorView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration">
-                            <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
                         </accessibility>
                         <constraints>
                             <constraint firstItem="JNV-r1-Mq3" firstAttribute="top" secondItem="VEt-km-GDy" secondAttribute="top" id="Ccq-Gm-un2"/>
@@ -37,16 +40,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zi-TH-h1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1750" y="711"/>
+            <point key="canvasLocation" x="-2536.231884057971" y="476.11607142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TtO-dj-ftk">
             <objects>
                 <navigationController storyboardIdentifier="NavigationView" id="2lp-KT-HPU" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hF-fp-CRU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <connections>
                         <segue destination="YuO-jN-oXZ" kind="relationship" relationship="rootViewController" id="kv3-0e-dzv"/>
@@ -54,7 +56,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6n-Jm-1d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1744" y="1462"/>
+            <point key="canvasLocation" x="-2527.536231884058" y="979.01785714285711"/>
         </scene>
         <!--Share Photo-->
         <scene sceneID="9XI-zI-x2S">
@@ -65,61 +67,53 @@
                         <viewControllerLayoutGuide type="bottom" id="eVN-NT-Sj2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LH7-iZ-P9K">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0a-gE-ddl">
-                                <rect key="frame" x="20" y="174" width="30" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="20" y="198" width="30" height="30"/>
                                 <state key="normal" image="SharePhotoTabIcon">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="selectPhoto:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="eSc-Yz-lfq"/>
+                                    <action selector="selectPhotoWithSender:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="w0y-cS-Tpw"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TagIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hdt-Ur-oM7">
-                                <rect key="frame" x="20" y="124" width="30" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="20" y="148" width="30" height="30"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Photo" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQA-UO-ynD">
-                                <rect key="frame" x="58" y="124" width="194" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="58" y="148" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MessageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="u4X-PE-0xk">
-                                <rect key="frame" x="20" y="291" width="30" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="20" y="315" width="30" height="30"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3U-gp-t0a">
-                                <rect key="frame" x="260" y="124" width="40" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="354" y="148" width="40" height="30"/>
                                 <state key="normal" title="Share">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sharePhoto:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="uFG-8W-YbR"/>
+                                    <action selector="sharePhotoWithSender:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="F8D-Rq-XZY"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's on your mind? Just type here..." translatesAutoresizingMaskIntoConstraints="NO" id="pnd-mE-xip">
-                                <rect key="frame" x="58" y="291" width="242" height="101"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="58" y="315" width="336" height="322"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vZb-WL-Xvh">
-                                <rect key="frame" x="58" y="174" width="240" height="100"/>
-                                <animations/>
+                                <rect key="frame" x="58" y="198" width="240" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="2N3-Gp-3gG"/>
                                     <constraint firstAttribute="height" constant="100" id="8aQ-qG-RY1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vZb-WL-Xvh" firstAttribute="leading" secondItem="S0a-gE-ddl" secondAttribute="trailing" constant="8" symbolic="YES" id="2K9-rk-ycj"/>
                             <constraint firstItem="dQA-UO-ynD" firstAttribute="leading" secondItem="Hdt-Ur-oM7" secondAttribute="trailing" constant="8" symbolic="YES" id="2eu-z4-Eux"/>
@@ -151,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poG-nh-t9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-750" y="1793"/>
+            <point key="canvasLocation" x="-1062" y="1513"/>
         </scene>
         <!--Share Link-->
         <scene sceneID="haD-t6-5MB">
@@ -162,52 +156,44 @@
                         <viewControllerLayoutGuide type="bottom" id="gW5-1e-7Dk"/>
                     </layoutGuides>
                     <view key="view" contentMode="center" id="h12-DQ-jwb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="ShareLinkTabIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eAY-LW-VbZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ShareLinkTabIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eAY-LW-VbZ">
                                 <rect key="frame" x="20" y="124" width="27" height="30"/>
-                                <animations/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.dreamforce.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Y-Q0-Wlr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.dreamforce.com" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Y-Q0-Wlr">
                                 <rect key="frame" x="55" y="124" width="197" height="30"/>
-                                <animations/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                             </textField>
                             <button opaque="NO" contentMode="right" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5iw-y8-31W">
-                                <rect key="frame" x="260" y="124" width="40" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="354" y="148" width="40" height="30"/>
                                 <state key="normal" title="Share">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="shareLink:" destination="Oll-I5-Gfn" eventType="touchUpInside" id="Pv5-Qf-WU0"/>
+                                    <action selector="shareLinkWithSender:" destination="Oll-I5-Gfn" eventType="touchUpInside" id="gPf-aU-mhs"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TagIcon" translatesAutoresizingMaskIntoConstraints="NO" id="EqT-w9-MR5">
-                                <rect key="frame" x="20" y="174" width="30" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="20" y="198" width="30" height="30"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chatter" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-vX-ksL">
-                                <rect key="frame" x="58" y="174" width="242" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="58" y="198" width="336" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MessageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qKm-d4-Vjq">
-                                <rect key="frame" x="20" y="229" width="30" height="30"/>
-                                <animations/>
+                                <rect key="frame" x="20" y="253" width="30" height="30"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can add notes here..." translatesAutoresizingMaskIntoConstraints="NO" id="GZv-qp-bWS">
-                                <rect key="frame" x="58" y="229" width="242" height="86"/>
-                                <animations/>
+                                <rect key="frame" x="58" y="253" width="336" height="356"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qKm-d4-Vjq" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="2Xn-cO-BiG"/>
                             <constraint firstItem="qKm-d4-Vjq" firstAttribute="top" secondItem="EqT-w9-MR5" secondAttribute="bottom" constant="25" id="4j6-B7-p4C"/>
@@ -239,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNb-Bw-Ttv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-750" y="1166"/>
+            <point key="canvasLocation" x="-1086.9565217391305" y="780.80357142857144"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="iuw-Lk-gRN">
@@ -256,8 +242,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="g6Q-ED-fDG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Oll-I5-Gfn" kind="relationship" relationship="viewControllers" id="f5O-dK-ZiR"/>
@@ -266,7 +251,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ey5-NK-e4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1290" y="1462"/>
+            <point key="canvasLocation" x="-1869.5652173913045" y="979.01785714285711"/>
         </scene>
     </scenes>
     <resources>
@@ -275,9 +260,4 @@
         <image name="SharePhotoTabIcon" width="30" height="30"/>
         <image name="TagIcon" width="30" height="30"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

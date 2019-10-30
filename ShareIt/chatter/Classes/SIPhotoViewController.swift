@@ -29,7 +29,7 @@ class SIPhotoViewController : SIChatterViewController,
         super.viewDidLoad()
         
         //Looks for single or multiple taps.
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
         
         self.photoPreview.layer.borderColor = UIColor.gray.cgColor
@@ -37,7 +37,7 @@ class SIPhotoViewController : SIChatterViewController,
     }
     
     // It hides keyboard on tapping on screen
-    func hideKeyboard(){
+    @objc func hideKeyboard(){
         view.endEditing(true)
     }
     
