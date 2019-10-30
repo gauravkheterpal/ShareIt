@@ -19,8 +19,8 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
 
         // Initialize SFUserAccountManager
         let dictonaryObj = NSDictionary(contentsOfFile: Bundle.main.path(forResource: nil, ofType: "plist")!)
-        SFUserAccountManager.sharedInstance().oauthClientId = dictonaryObj!.object(forKey: "SFDCOAuthConsumerKey") as! String
-        SFUserAccountManager.sharedInstance().oauthCompletionUrl = dictonaryObj!.object(forKey: "SFDCOAuthCallbackURL") as! String
+        SFUserAccountManager.sharedInstance().oauthClientId = dictonaryObj!.object(forKey: "SFDCOAuthConsumerKey") as? String
+        SFUserAccountManager.sharedInstance().oauthCompletionUrl = dictonaryObj!.object(forKey: "SFDCOAuthCallbackURL") as? String
         SFUserAccountManager.sharedInstance().scopes = NSSet(array: ["api"]) as Set<NSObject>
         SFAuthenticationManager.shared().add(self)
     }
@@ -37,15 +37,13 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
      @param launchOptions -> the launch options
      @return Always true in this implementation
      */
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         // Start login process
         login()
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 46.0/255.0, green: 140.0/255.0, blue: 212.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
-        
-        return true
     }
 
     
@@ -78,7 +76,7 @@ class ShareItAppDelegate: UIResponder, UIApplicationDelegate, SFAuthenticationMa
      This function is called when user is logged out.
      @param manager -> the SFAuthenticationManager
      */
-    func authManagerDidLogout(manager : SFAuthenticationManager) {
+    func authManagerDidLogout(_ manager: SFAuthenticationManager!) {
         // Reset app view state to its initial state
         self.initializeAppViewState()
         // Remove User Account
