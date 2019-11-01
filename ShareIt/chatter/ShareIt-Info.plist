@@ -41,12 +41,18 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>To share image</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To share image</string>
 	<key>SFDCOAuthCallbackURL</key>
 	<string>testsfdc:///mobilesdk/detect/oauth/done</string>
 	<key>SFDCOAuthConsumerKey</key>
 	<string>3MVG9ZL0ppGP5UrBly5N4WklgL0ZiS6sHfjz9UE_a1xOac4xnRV6eIBibL0VfHUutVW7SG4yVQgBssd8us5c1</string>
 	<key>SFDCOAuthLoginHost</key>
 	<string>login.salesforce.com</string>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -66,9 +72,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>To share image</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To share image</string>
 </dict>
 </plist>
