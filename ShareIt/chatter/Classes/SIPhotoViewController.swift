@@ -19,7 +19,7 @@ class SIPhotoViewController : SIChatterViewController,
     
     @IBOutlet var fileName: UITextField!
 
-    @IBOutlet var message: UITextView!
+    @IBOutlet var message: UITextField!
 
     @IBOutlet var photoPreview: UIImageView!
 
@@ -121,14 +121,15 @@ class SIPhotoViewController : SIChatterViewController,
      @param request -> the request
      @param jsonResponse -> the response
      */
-    override func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {
-        super.request(request: request, didLoadResponse: jsonResponse)
-        if !request.path.hasSuffix("/feed-items") {
-            // File upload response, posts feed item
-//            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text,
-//                withExistingDocument: jsonResponse.objectForKey("id") as! String, delegate: self)
-            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text,
-                                                     withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
-        }
+    override func request(_ request: SFRestRequest!, didLoadResponse dataResponse: Any!) {
+        super.request(request, didLoadResponse: dataResponse)
+        guard let jsonResponse = dataResponse as? NSDictionary else { return }
+                if !request.path.hasSuffix("/feed-items") {
+                    // File upload response, posts feed item
+        //            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text,
+        //                withExistingDocument: jsonResponse.objectForKey("id") as! String, delegate: self)
+                    SIChatterModel.postFeedItemToChatterWall(feedMsg: self.message.text ?? "",
+                                                             withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
+                }
     }
 }

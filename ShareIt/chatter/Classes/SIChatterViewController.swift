@@ -20,10 +20,10 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      @param request -> the request
      @param jsonResponse -> the response
      */
-    func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject) {
+    func request(_ request: SFRestRequest!, didLoadResponse dataResponse: Any!) {
         if request.path.hasSuffix("/feed-items") {
             // Feed item post response
-            NSLog("SIChatterViewController.request:didLoadResponse: shared item has been successfully posted.");
+            print("SIChatterViewController.request:didLoadResponse: shared item has been successfully posted.")
             SIChatterModel.showAlert(alertTitle: "Success", alertMessage: "The shared item has been successfully posted.",
                 controller : self)
         }
@@ -34,8 +34,8 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      @param request -> the request
      @param error -> the error
      */
-    func request(request : SFRestRequest, didFailLoadWithError error : NSError) {
-        NSLog("SIChatterViewController.request:didFailLoadWithError: REST API request failed: %@", error);
+    func request(_ request: SFRestRequest!, didFailLoadWithError error: Error!) {
+        print("SIChatterViewController.request:didFailLoadWithError: REST API request failed: ", error!)
         SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce failed.", controller : self)
     }
 
@@ -43,17 +43,17 @@ class SIChatterViewController : UIViewController, SFRestDelegate {
      This delegate is called when a request has be cancelled.
      @param request -> the request
      */
-    func requestDidCancelLoad(request : SFRestRequest) {
-        NSLog("SIChatterViewController.requestDidCancelLoad: REST API request cancelled: %@", request);
+    func requestDidCancelLoad(_ request: SFRestRequest!) {
+        print("SIChatterViewController.requestDidCancelLoad: REST API request cancelled: ", request!)
         SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce is cancelled.", controller : self)
     }
-
+    
     /*!
      This delegate is called when a request has timed out.
      @param -> request the request
      */
-    func requestDidTimeout(request : SFRestRequest) {
-        NSLog("ChatterShareViewController.requestDidTimeout: REST API request timeout: %@", request);
+    func requestDidTimeout(_ request: SFRestRequest!) {
+        print("ChatterShareViewController.requestDidTimeout: REST API request timeout: ", request!)
         SIChatterModel.showErrorAlert(alertMessage: "Request to Salesforce timeout.", controller : self)
     }
 }

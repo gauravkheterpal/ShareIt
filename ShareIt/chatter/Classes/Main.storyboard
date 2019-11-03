@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="s7z-cQ-xPc">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="s7z-cQ-xPc">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +54,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p6n-Jm-1d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2527.536231884058" y="979.01785714285711"/>
+            <point key="canvasLocation" x="-2791" y="1187"/>
         </scene>
         <!--Share Photo-->
         <scene sceneID="9XI-zI-x2S">
@@ -83,7 +81,7 @@
                                 <rect key="frame" x="20" y="148" width="30" height="30"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Photo" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dQA-UO-ynD">
-                                <rect key="frame" x="58" y="148" width="288" height="30"/>
+                                <rect key="frame" x="58" y="148" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -99,12 +97,6 @@
                                     <action selector="sharePhotoWithSender:" destination="Pnq-N9-x6h" eventType="touchUpInside" id="F8D-Rq-XZY"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="What's on your mind? Just type here..." translatesAutoresizingMaskIntoConstraints="NO" id="pnd-mE-xip">
-                                <rect key="frame" x="58" y="315" width="336" height="322"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vZb-WL-Xvh">
                                 <rect key="frame" x="58" y="198" width="240" height="100"/>
                                 <constraints>
@@ -112,26 +104,30 @@
                                     <constraint firstAttribute="height" constant="100" id="8aQ-qG-RY1"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's in your mind" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZR-WI-gc0">
+                                <rect key="frame" x="58" y="313" width="336" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vZb-WL-Xvh" firstAttribute="leading" secondItem="S0a-gE-ddl" secondAttribute="trailing" constant="8" symbolic="YES" id="2K9-rk-ycj"/>
                             <constraint firstItem="dQA-UO-ynD" firstAttribute="leading" secondItem="Hdt-Ur-oM7" secondAttribute="trailing" constant="8" symbolic="YES" id="2eu-z4-Eux"/>
+                            <constraint firstItem="rZR-WI-gc0" firstAttribute="top" secondItem="vZb-WL-Xvh" secondAttribute="bottom" constant="15" id="81m-Ly-pfq"/>
                             <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="dQA-UO-ynD" secondAttribute="top" id="9r6-Kv-qJM"/>
-                            <constraint firstItem="pnd-mE-xip" firstAttribute="top" secondItem="vZb-WL-Xvh" secondAttribute="bottom" constant="17" id="FIY-l5-nAJ"/>
                             <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="r3U-gp-t0a" secondAttribute="top" id="GJp-ts-YHY"/>
                             <constraint firstItem="S0a-gE-ddl" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="IRa-Hr-R1I"/>
-                            <constraint firstItem="u4X-PE-0xk" firstAttribute="top" secondItem="pnd-mE-xip" secondAttribute="top" id="SU2-jd-r09"/>
                             <constraint firstItem="u4X-PE-0xk" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="SvQ-Oc-r9w"/>
-                            <constraint firstItem="pnd-mE-xip" firstAttribute="leading" secondItem="u4X-PE-0xk" secondAttribute="trailing" constant="8" symbolic="YES" id="UG5-LO-JeF"/>
                             <constraint firstItem="Hdt-Ur-oM7" firstAttribute="leading" secondItem="LH7-iZ-P9K" secondAttribute="leading" constant="20" symbolic="YES" id="WHn-gK-EVj"/>
                             <constraint firstAttribute="trailing" secondItem="r3U-gp-t0a" secondAttribute="trailing" constant="20" symbolic="YES" id="X5e-xh-meo"/>
+                            <constraint firstItem="rZR-WI-gc0" firstAttribute="leading" secondItem="vZb-WL-Xvh" secondAttribute="leading" id="cQb-id-SJJ"/>
                             <constraint firstItem="Hdt-Ur-oM7" firstAttribute="top" secondItem="ayp-51-Tqc" secondAttribute="bottom" constant="60" id="jpY-4q-W5t"/>
-                            <constraint firstItem="eVN-NT-Sj2" firstAttribute="top" secondItem="pnd-mE-xip" secondAttribute="bottom" constant="132" id="mUT-67-VXq"/>
                             <constraint firstAttribute="trailing" secondItem="dQA-UO-ynD" secondAttribute="trailing" constant="68" id="nN4-sp-Imy"/>
-                            <constraint firstAttribute="trailing" secondItem="pnd-mE-xip" secondAttribute="trailing" constant="20" symbolic="YES" id="rF2-6z-5nc"/>
                             <constraint firstItem="S0a-gE-ddl" firstAttribute="top" secondItem="Hdt-Ur-oM7" secondAttribute="bottom" constant="20" id="rvB-P8-pOK"/>
+                            <constraint firstItem="rZR-WI-gc0" firstAttribute="trailing" secondItem="r3U-gp-t0a" secondAttribute="trailing" id="sho-Br-ASI"/>
                             <constraint firstItem="vZb-WL-Xvh" firstAttribute="top" secondItem="S0a-gE-ddl" secondAttribute="top" id="yZf-gj-4ST"/>
+                            <constraint firstItem="u4X-PE-0xk" firstAttribute="centerY" secondItem="rZR-WI-gc0" secondAttribute="centerY" id="yf0-d1-o6m"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share Photo" image="SharePhotoTabIcon" id="OnH-x9-Sdj"/>
@@ -139,13 +135,13 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="fileName" destination="dQA-UO-ynD" id="m6B-fX-6Ty"/>
-                        <outlet property="message" destination="pnd-mE-xip" id="OGQ-bl-Gom"/>
+                        <outlet property="message" destination="rZR-WI-gc0" id="Tcs-Cj-t2n"/>
                         <outlet property="photoPreview" destination="vZb-WL-Xvh" id="V43-NK-tFJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poG-nh-t9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1062" y="1513"/>
+            <point key="canvasLocation" x="-1062.3188405797102" y="1512.7232142857142"/>
         </scene>
         <!--Share Link-->
         <scene sceneID="haD-t6-5MB">
@@ -180,27 +176,28 @@
                                 <rect key="frame" x="20" y="198" width="30" height="30"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Chatter" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUa-vX-ksL">
-                                <rect key="frame" x="58" y="198" width="336" height="30"/>
+                                <rect key="frame" x="58" y="198" width="336" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MessageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qKm-d4-Vjq">
                                 <rect key="frame" x="20" y="253" width="30" height="30"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You can add notes here..." translatesAutoresizingMaskIntoConstraints="NO" id="GZv-qp-bWS">
-                                <rect key="frame" x="58" y="253" width="336" height="356"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's in your mind" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D9e-0e-6fa">
+                                <rect key="frame" x="58" y="251" width="336" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="D9e-0e-6fa" firstAttribute="leading" secondItem="FUa-vX-ksL" secondAttribute="leading" id="0ew-56-ltx"/>
                             <constraint firstItem="qKm-d4-Vjq" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="2Xn-cO-BiG"/>
                             <constraint firstItem="qKm-d4-Vjq" firstAttribute="top" secondItem="EqT-w9-MR5" secondAttribute="bottom" constant="25" id="4j6-B7-p4C"/>
-                            <constraint firstItem="gW5-1e-7Dk" firstAttribute="top" secondItem="GZv-qp-bWS" secondAttribute="bottom" constant="204" id="5UM-Ra-1mI"/>
+                            <constraint firstItem="qKm-d4-Vjq" firstAttribute="centerY" secondItem="D9e-0e-6fa" secondAttribute="centerY" id="5IV-RW-5bM"/>
                             <constraint firstItem="EqT-w9-MR5" firstAttribute="leading" secondItem="h12-DQ-jwb" secondAttribute="leading" constant="20" symbolic="YES" id="7Iz-U2-G3w"/>
                             <constraint firstAttribute="trailing" secondItem="FUa-vX-ksL" secondAttribute="trailing" constant="20" id="9SW-Qb-M5q"/>
-                            <constraint firstAttribute="trailing" secondItem="GZv-qp-bWS" secondAttribute="trailing" constant="20" symbolic="YES" id="9lL-D0-qYw"/>
+                            <constraint firstItem="D9e-0e-6fa" firstAttribute="trailing" secondItem="FUa-vX-ksL" secondAttribute="trailing" id="AwR-Kh-5XP"/>
                             <constraint firstItem="5iw-y8-31W" firstAttribute="top" secondItem="Z5Y-Q0-Wlr" secondAttribute="top" id="CCj-Ab-g5F"/>
                             <constraint firstItem="5iw-y8-31W" firstAttribute="leading" secondItem="Z5Y-Q0-Wlr" secondAttribute="trailing" constant="8" symbolic="YES" id="GDt-cr-vEy"/>
                             <constraint firstItem="EqT-w9-MR5" firstAttribute="top" secondItem="eAY-LW-VbZ" secondAttribute="bottom" constant="20" id="Hrf-IY-MAu"/>
@@ -208,19 +205,18 @@
                             <constraint firstItem="5iw-y8-31W" firstAttribute="top" secondItem="eAY-LW-VbZ" secondAttribute="top" id="JGK-KC-DYR"/>
                             <constraint firstAttribute="trailing" secondItem="5iw-y8-31W" secondAttribute="trailing" constant="20" symbolic="YES" id="N9G-mh-VUv"/>
                             <constraint firstItem="EqT-w9-MR5" firstAttribute="top" secondItem="FUa-vX-ksL" secondAttribute="top" id="NTX-Ps-ax3"/>
-                            <constraint firstItem="GZv-qp-bWS" firstAttribute="top" secondItem="qKm-d4-Vjq" secondAttribute="top" id="Xb8-Sp-DKc"/>
                             <constraint firstItem="eAY-LW-VbZ" firstAttribute="top" secondItem="5nd-pM-5ca" secondAttribute="bottom" constant="60" id="Z7j-VT-4AM"/>
+                            <constraint firstItem="D9e-0e-6fa" firstAttribute="top" secondItem="FUa-vX-ksL" secondAttribute="bottom" constant="19" id="ary-jQ-LsI"/>
                             <constraint firstItem="FUa-vX-ksL" firstAttribute="leading" secondItem="EqT-w9-MR5" secondAttribute="trailing" constant="8" symbolic="YES" id="gZo-lq-rLj"/>
                             <constraint firstItem="Z5Y-Q0-Wlr" firstAttribute="leading" secondItem="eAY-LW-VbZ" secondAttribute="trailing" constant="8" symbolic="YES" id="sXy-fc-lWA"/>
                             <constraint firstAttribute="trailing" secondItem="Z5Y-Q0-Wlr" secondAttribute="trailing" constant="68" id="vnq-fU-Hj4"/>
-                            <constraint firstItem="GZv-qp-bWS" firstAttribute="leading" secondItem="qKm-d4-Vjq" secondAttribute="trailing" constant="8" symbolic="YES" id="zzF-KJ-oAz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share Link" image="ShareLinkTabIcon" id="Ugf-it-UPb"/>
                     <connections>
                         <outlet property="link" destination="Z5Y-Q0-Wlr" id="SBy-pO-OzE"/>
                         <outlet property="linkName" destination="FUa-vX-ksL" id="GCX-r5-N0h"/>
-                        <outlet property="message" destination="GZv-qp-bWS" id="PIS-dR-Xfd"/>
+                        <outlet property="message" destination="D9e-0e-6fa" id="3jn-4v-Ja6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNb-Bw-Ttv" userLabel="First Responder" sceneMemberID="firstResponder"/>

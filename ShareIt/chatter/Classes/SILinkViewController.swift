@@ -18,7 +18,7 @@ class SILinkViewController : SIChatterViewController {
 
     @IBOutlet var linkName: UITextField!
 
-    @IBOutlet var message: UITextView!
+    @IBOutlet var message: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class SILinkViewController : SIChatterViewController {
         }
         if msg.isEmpty {
             // Post feed item with link
-            SIChatterModel.postFeedItemToChatterWall(feedMsg: message.text, withLink: link.text!,
+            SIChatterModel.postFeedItemToChatterWall(feedMsg: message.text ?? "", withLink: link.text!,
                 linkName: linkName.text!, delegate: self)
         } else {
             SIChatterModel.showErrorAlert(alertMessage: msg, controller : self)

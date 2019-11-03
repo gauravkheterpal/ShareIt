@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AppSuiteName</key>
-	<string>group.metacube.mobile.shareIt</string>
+	<string>group.com.metacube.mobile.ShareIt.mtx</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.metacube.mobile.ShareIt</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

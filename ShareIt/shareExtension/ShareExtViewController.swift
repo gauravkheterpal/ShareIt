@@ -194,25 +194,25 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param request -> the request
      @param jsonResponse -> the response
      */
-    func request(request : SFRestRequest, didLoadResponse jsonResponse : AnyObject)
-    {
+    func request(_ request: SFRestRequest!, didLoadResponse dataResponse: Any!) {
+        guard let jsonResponse = dataResponse as? NSDictionary else { return }
         if request.path.hasSuffix("/feed-items") {
-            // Feed item post response
-            SIChatterModel.showAlert(alertTitle: "Success", alertMessage:
-                "The shared item has been successfully posted.",
-                handler: {
-                    (UIAlertAction) in
-                    self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
-                },
-                controller: self)
-          
-        } else {
-            // File upload response, post feed item
-//            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
-//                                                     withExistingDocument: jsonResponse.object("id") as! String, delegate: self)
-            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
-                                                     withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
-        }
+                    // Feed item post response
+                    SIChatterModel.showAlert(alertTitle: "Success", alertMessage:
+                        "The shared item has been successfully posted.",
+                        handler: {
+                            (UIAlertAction) in
+                            self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+                        },
+                        controller: self)
+                  
+                } else {
+                    // File upload response, post feed item
+        //            SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
+        //                                                     withExistingDocument: jsonResponse.object("id") as! String, delegate: self)
+                    SIChatterModel.postFeedItemToChatterWall(feedMsg: self.contentText,
+                                                             withExistingDocument: jsonResponse.object(forKey: "id") as! String, delegate: self)
+                }
     }
 
     /*!
@@ -220,7 +220,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      @param request -> the request
      @param error -> the error
     */
-    func request(request : SFRestRequest, didFailLoadWithError error : NSError) {
+    func request(_ request: SFRestRequest!, didFailLoadWithError error: Error!) {
         showAlert(alertMessage: "Request to Salesforce failed.")
     }
 
@@ -228,7 +228,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      This delegate is called when a request has be cancelled.
      @param request -> the request
      */
-    func requestDidCancelLoad(request : SFRestRequest) {
+    func requestDidCancelLoad(_ request: SFRestRequest!) {
         showAlert(alertMessage: "Request to Salesforce is cancelled.")
     }
 
@@ -236,7 +236,7 @@ class ShareExtViewController: SLComposeServiceViewController, SFRestDelegate {
      This delegate is called when a request has timed out.
      @param request -> the request
      */
-    func requestDidTimeout(request : SFRestRequest) {
+    func requestDidTimeout(_ request: SFRestRequest!) {
         showAlert(alertMessage: "Request to Salesforce timeout.")
     }
 
